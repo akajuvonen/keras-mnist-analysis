@@ -1,3 +1,4 @@
+from keras.utils import to_categorical
 from keras.datasets import mnist
 
 # Load data, training and testing sets
