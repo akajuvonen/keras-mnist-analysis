@@ -7,3 +7,7 @@ from keras.datasets import mnist
 # Convert to float32
 x_train = x_train.astype('float32')
 x_test = x_test.astype('float32')
+
+# Scale the values between 0 and 1
+x_train = x_train / 255
+x_test = x_test / 255
