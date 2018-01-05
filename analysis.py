@@ -4,4 +4,6 @@ from keras.datasets import mnist
 # The data is already shuffled at this point
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-print(max(x_train.any()))
+# Convert to float32
+x_train = x_train.astype('float32')
+x_test = x_test.astype('float32')
