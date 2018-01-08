@@ -9,7 +9,7 @@ import numpy as np
 
 N_CLASSES = 10
 INPUT_SHAPE = (28, 28, 1)
-EPOCHS = 10
+EPOCHS = 20
 BATCH_SIZE = 100
 
 # Load data, training and testing sets
