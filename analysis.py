@@ -7,7 +7,7 @@ from keras.optimizers import Adam
 
 N_CLASSES = 10
 INPUT_SHAPE = (28, 28, 1)
-EPOCHS = 10
+EPOCHS = 3
 BATCH_SIZE = 100
 
 # Load data, training and testing sets
@@ -46,5 +46,11 @@ model.add(Dense(10, activation='softmax'))
 model.compile(optimizer=Adam(), loss=categorical_crossentropy,
               metrics=['accuracy'])
 
+# Fit the model
 model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
           validation_data=(x_test, y_test))
+
+# Print the final metrics
+loss, accuracy = model.evaluate(x_test, y_test, verbose=0)
+print("Loss: ", loss)
+print("Accuracy: ", accuracy)
