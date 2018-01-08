@@ -2,6 +2,8 @@ from keras.utils import to_categorical
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from keras.losses import categorical_crossentropy
+from keras.optimizers import Adam
 
 N_CLASSES = 10
 INPUT_SHAPE = (28, 28, 1)
@@ -34,3 +36,7 @@ model.add(MaxPooling2D(pool_size=2))
 model.add(Flatten())
 # Output layer with 10 outputs, uses softmax classifier
 model.add(Dense(10, activation='softmax'))
+
+# Compile the model with Adam optimizer
+model.compile(optimizer=Adam(), loss=categorical_crossentropy,
+              metrics=['accuracy'])
