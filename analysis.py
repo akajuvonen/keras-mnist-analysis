@@ -8,10 +8,15 @@ from keras.optimizers import Adam
 N_CLASSES = 10
 INPUT_SHAPE = (28, 28, 1)
 EPOCHS = 10
+BATCH_SIZE = 100
 
 # Load data, training and testing sets
 # The data is already shuffled at this point
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# Reshape data to include channel dimension, required for Keras
+x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
+x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 
 # Convert to float32
 x_train = x_train.astype('float32')
@@ -40,3 +45,6 @@ model.add(Dense(10, activation='softmax'))
 # Compile the model with Adam optimizer
 model.compile(optimizer=Adam(), loss=categorical_crossentropy,
               metrics=['accuracy'])
+
+model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
+          validation_data=(x_test, y_test))
