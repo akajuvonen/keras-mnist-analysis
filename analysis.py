@@ -37,6 +37,8 @@ model = Sequential()
 # A 2-D convolutional layer
 model.add(Conv2D(filters=16, kernel_size=(3, 3), activation='relu',
                  input_shape=INPUT_SHAPE))
+# Let's add a second conv layer
+model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
 # Pooling layer with pool size and strides = (2,2)
 model.add(MaxPooling2D(pool_size=2))
 # Flattens the output for normal neural network layer
