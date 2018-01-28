@@ -5,10 +5,18 @@ Network with a relatively simple architecture to recognize hand written
 digits from the [MNIST][mnist] dataset. Also features some dropout layers to
 avoid overfitting and improve accuracy.
 
+Analysis steps:
+- Loading MNIST dataset
+- Data type conversions
+- Scaling
+- One-hot encoding of the result classes
+- Defining Keras sequential model and compiling it
+- Model fitting
+- Metrics and results
+
 ## Dependencies
 
 You need to have:
-
 - [TensorFlow][tf]. I recommend using GPU if possible for better performance.
 - [Keras][keras] using TensorFlow backend. Offersa high-level API and a more
   *pythonic* way to develop deep learning network architectures. Cuts down the
