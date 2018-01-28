@@ -1,7 +1,7 @@
 from keras.utils import to_categorical
 from keras.datasets import mnist
 from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 from keras.losses import categorical_crossentropy
 from keras.optimizers import Adam
 from sklearn.metrics import confusion_matrix
@@ -40,11 +40,17 @@ model.add(Conv2D(filters=16, kernel_size=(3, 3), activation='relu',
 model.add(Conv2D(filters=16, kernel_size=(3, 3), activation='relu'))
 # Pooling layer with pool size and strides = (2,2)
 model.add(MaxPooling2D(pool_size=2))
+# Add a dropout layer to avoid overfitting
+model.add(Dropout(0.25))
 model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
 model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=2))
+model.add(Dropout(0.25))
 # Flattens the output for normal neural network layer
 model.add(Flatten())
+# Add a normal densely connected neural network layer
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.25))
 # Output layer with 10 outputs, uses softmax classifier
 model.add(Dense(10, activation='softmax'))
 
